@@ -1,0 +1,38 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label class="block mb-2">Username</label>
+        <input
+          type="text"
+          formControlName="username"
+          class="w-full p-2 border rounded"
+        />
+        <div *ngIf="submitted && f.username.errors" class="text-red-500">
+          <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block mb-2">Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          class="w-full p-2 border rounded"
+        />
+        <div *ngIf="submitted && f.password.errors" class="text-red-500">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+      </div>
+      <div class="mb-4">
+        <button
+          [disabled]="loading"
+          class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+        >
+          Login
+        </button>
+      </div>
+      <div *ngIf="error" class="text-red-500 text-center">{{ error }}</div>
+    </form>
+  </div>
+</div>
