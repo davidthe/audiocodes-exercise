@@ -1,12 +1,14 @@
 # AudioCodes Exercise
 
-- [x] Create an online DB
-- [x] Create backend service to fetch from DB
-- [x] Create login screen with user/password
-- [x] Show dashboard page to show data
-- [x] Report Health Issue
-- [x] Allow Running history
-- [ ] deploy client and server
+- [X] Create an online DB
+- [X] Create backend service to fetch from DB
+- [X] Create login screen with user/password
+- [X] Show dashboard page to show data
+- [X] Report Health Issue
+- [X] Allow Running history
+- [X] deploy client and server
+
+  URL  ``https://audio-client-60gcfnpx6-david112s-projects.vercel.app/``
 
 This project is a full-stack application that provides user authentication, health metrics analysis, and file handling functionalities. The application is built using Angular for the frontend and Node.js for the backend.
 
@@ -43,19 +45,16 @@ This project is a full-stack application that provides user authentication, heal
    git clone https://github.com/davidthe/audiocodes-exercise.git
    cd audiocodes-exercise/server
    ```
-
 2. Install dependencies:
 
    ```sh
    npm install
    ```
-
 3. Create a `.env` file and add your RestDB API key:
 
    ```env
    RESTDB_API_KEY=your_api_key
    ```
-
 4. Start the server:
 
    ```sh
@@ -69,19 +68,16 @@ This project is a full-stack application that provides user authentication, heal
    ```sh
    cd ../client/health-app
    ```
-
 2. Install dependencies:
 
    ```sh
    npm install
    ```
-
 3. Start the development server:
 
    ```sh
    ng serve
    ```
-
 4. Access the application at `http://localhost:4200`.
 
 ### Running the Application
