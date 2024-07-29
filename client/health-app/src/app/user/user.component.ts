@@ -2,7 +2,7 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Subscription, interval } from 'rxjs';
-import healthReasons from '../../../../../data-files/health_reasons.json';
+import healthReasons from './health_reasons.json';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
