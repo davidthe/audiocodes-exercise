@@ -1,0 +1,92 @@
+<div class="p-4 border-b">
+  <div (click)="toggleExpand()" class="flex justify-between items-center">
+    <span>{{ user.name }}</span>
+    <span>{{ user.id }}</span>
+    <span>{{ user.age }}</span>
+    <button class="bg-blue-500 text-white px-2 py-1 rounded">
+      {{ expanded ? "Collapse" : "Expand" }}
+    </button>
+  </div>
+  <div *ngIf="expanded" class="mt-4">
+    <ng-container *ngIf="userDetails; else loading">
+      <p><strong>Height:</strong> {{ userDetails.user.Height }} cm</p>
+      <p><strong>Weight:</strong> {{ userDetails.user.Weight }} kg</p>
+      <p><strong>BMI:</strong> {{ getBMI() | number : "1.1-1" }}</p>
+      <p><strong>Heart Rate Data:</strong></p>
+      <p>Current Minute: {{ currentMinute }}</p>
+      <p>Current Status: {{ getCurrentStatus() }}</p>
+
+      <p>
+        <strong>Average Heart Rate:</strong>
+        {{ userDetails.averageHeartRate | number : "1.0-0" }}
+      </p>
+
+      <!-- Health Issue Report Form -->
+      <div class="mt-4">
+        <h3>Report Health Issue</h3>
+        <form [formGroup]="healthForm" (ngSubmit)="submitHealthReport()">
+          <div>
+            <label for="firstLevel">Select First Level</label>
+            <select
+              id="firstLevel"
+              formControlName="firstLevel"
+              (change)="onFirstLevelChange()"
+            >
+              <option
+                *ngFor="let option of healthReasons.values"
+                [value]="option.name"
+              >
+                {{ option.name }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <label for="secondLevel">Select Second Level</label>
+            <select
+              id="secondLevel"
+              formControlName="secondLevel"
+              (change)="onSecondLevelChange()"
+            >
+              <option
+                *ngFor="let option of secondLevelOptions"
+                [value]="option.name"
+              >
+                {{ option.name }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <label for="thirdLevel">Select Third Level</label>
+            <select id="thirdLevel" formControlName="thirdLevel">
+              <option
+                *ngFor="let option of thirdLevelOptions"
+                [value]="option.name"
+              >
+                {{ option.name }}
+              </option>
+            </select>
+          </div>
+          <button
+            type="submit"
+            class="bg-green-500 text-white px-2 py-1 rounded"
+          >
+            Report
+          </button>
+        </form>
+      </div>
+
+      <!-- CSV File Upload -->
+      <div class="mt-4">
+        <h3>Upload Running History (CSV)</h3>
+        <input type="file" (change)="handleFileInput($event)" accept=".csv" />
+        <div *ngIf="fileUploadProgress > 0">
+          <progress [value]="fileUploadProgress" max="100">
+            {{ fileUploadProgress }}%
+          </progress>
+        </div>
+        <p *ngIf="uploadResponse">{{ uploadResponse }}</p>
+      </div>
+    </ng-container>
+    <ng-template #loading>Loading...</ng-template>
+  </div>
+</div>
