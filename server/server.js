@@ -12,7 +12,9 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-
+app.get("/", (req, res) => {
+  res.send("I'm running");
+});
 app.use("/api/users", userRoutes);
 app.use("/api/data", verifyToken, dataRoutes);
 app.use("/api/report", verifyToken, reportRoutes);
