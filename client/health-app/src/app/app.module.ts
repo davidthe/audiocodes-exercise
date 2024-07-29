@@ -10,10 +10,11 @@ import { AppComponent } from './app.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { LoginComponent } from './login/login.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, UserListComponent],
+  declarations: [AppComponent, LoginComponent, UserListComponent, UserComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
